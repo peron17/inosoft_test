@@ -10,4 +10,8 @@ class Kendaraan extends Model
     use HasFactory;
 
     protected $collection = "kendaraans";
+
+    protected $fillable = [
+        'tahun_keluaran', 'warna', 'harga', 'jenis_kendaraan', 'nama_kendaraan', 'spesifikasi', 'stok'
+    ];
 }
