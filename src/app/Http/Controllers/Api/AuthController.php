@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 
 class AuthController extends BaseController
 {
-    public function login(LoginRequest $request, LoginService $loginService)
+    public function login(LoginService $loginService)
     {
         $token = $loginService->login();
         if ($token != null) {

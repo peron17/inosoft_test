@@ -26,7 +26,15 @@ class StockReportRequest extends FormRequest
     {
         return [
             'jenis_kendaraan' => 'nullable|string|in:mobil,motor',
-            'nama_kendaraan' => 'nullable|string'
+            'nama_kendaraan' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (is_array($value)) {
+                        $fail("The $attribute is invalid");
+                    }
+                }
+            ]
         ];
     }
 }
