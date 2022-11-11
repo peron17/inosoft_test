@@ -13,9 +13,9 @@ class SalesController extends BaseController
         $this->repository = $salesRepository;
     }
 
-    public function salesPerItem()
+    public function salesKendaraan($id = null)
     {
-        return $this->repository->salesPerItem();
+        return $this->repository->salesKendaraan($id);
     }
 
     public function sales()

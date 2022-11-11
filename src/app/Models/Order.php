@@ -15,6 +15,10 @@ class Order extends Model
         'tgl_transaksi', 'nama_pelanggan', 'total_harga'
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'id_order', '_id');

@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Http\Requests\SalesReportRequest;
-use App\Http\Resources\SalesPerItemResource;
+use App\Http\Resources\SalesKendaraanResource;
 use App\Http\Resources\SalesResource;
 use App\Models\Kendaraan;
 use App\Models\Order;
@@ -24,17 +24,28 @@ class SalesRepository
     /**
      * collect data kendaraan with sales total for each kendaraan
      */
-    public function salesPerItem()
+    public function salesKendaraan($id = null)
     {
         $jenis = strtolower($this->request->get('jenis_kendaraan'));
 
-        if ($jenis) {
-            $list = Kendaraan::with(['orderItems'])->where('jenis_kendaraan', $jenis)->get();
+        if ($jenis && $id) {
+            $list = Kendaraan::with(['orderItems'])
+                ->where('_id', $id)
+                ->where('jenis_kendaraan', $jenis)
+                ->paginate();
+        } elseif ($id) {
+            $list = Kendaraan::with(['orderItems'])
+                ->where('_id', $id)
+                ->paginate();
+        } elseif ($jenis) {
+            $list = Kendaraan::with(['orderItems'])
+                ->where('jenis_kendaraan', $jenis)
+                ->paginate();
         } else {
-            $list = Kendaraan::with(['orderItems'])->get();
+            $list = Kendaraan::with(['orderItems'])->paginate();
         }
 
-        return SalesPerItemResource::collection($list);
+        return SalesKendaraanResource::collection($list);
     }
 
     /**

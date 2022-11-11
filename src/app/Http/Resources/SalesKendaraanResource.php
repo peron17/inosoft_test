@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SalesPerItemResource extends JsonResource
+class SalesKendaraanResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,14 +16,10 @@ class SalesPerItemResource extends JsonResource
      */
     public function toArray($request)
     {
-        $qty = $this->orderItems->sum('qty');
         return [
-            'id' => $this->id,
-            'nama_kendaraan' => $this->nama_kendaraan,
-            'jenis_kendaraan' => $this->jenis_kendaraan,
-            'harga' => $this->harga,
-            'terjual' => $qty,
-            'total_harga' => $this->harga * $qty
+            'kendaraan' => new KendaraanResource($this),
+            'sales' => SalesKendaraanItemResource::collection($this->orderItems)
+            // 'sales' => Order::select(['_id', 'tgl_transaksi', 'nama_pelanggan'])->whereIn('_id', $orderItem)->get()
         ];
     }
 }

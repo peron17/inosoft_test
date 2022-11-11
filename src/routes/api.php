@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     /** show stock report */
     Route::get('stock', [StokController::class, 'stokKendaraan']);
     /** show sales report per item / kendaraan */
-    Route::get('sales-per-item', [SalesController::class, 'salesPerItem']);
+    Route::get('sales-kendaraan/{id_kendaraan?}', [SalesController::class, 'salesKendaraan']);
     /** show sales report */
     Route::get('sales', [SalesController::class, 'sales']);
 });

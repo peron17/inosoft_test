@@ -15,6 +15,7 @@ class KendaraanResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'nama_kendaraan' => $this->nama_kendaraan,
             'jenis_kendaraan' => $this->jenis_kendaraan,
             'tahun_keluaran' => $this->tahun_keluaran,
