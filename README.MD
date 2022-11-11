@@ -25,4 +25,11 @@ Make sure you already install Docker and Docker Compose. If not, please refer to
     ```
 
 5. Create Database. You can access mongo express in browser, please go to http://localhost:[MONGO_EXPRESS_PORT] (the MONGO_EXPRESS_PORT refer to .env file in root project). Then create database **inosoft**.
-6.
+6. Generate table and data
+    ```bash
+    $ php artisan migrate --seed
+    ```
+7. Generate encryption key and client access
+    ```bash
+    $ php artisan passport:install
+    ```
