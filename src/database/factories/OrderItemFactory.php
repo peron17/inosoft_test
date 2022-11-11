@@ -14,7 +14,14 @@ class OrderItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_kendaraan' => \App\Models\Kendaraan::all()->random(),
+            'qty' => $this->faker->randomDigitNotZero(),
+            'harga' => function ($attributes) {
+                return \App\Models\Kendaraan::find($attributes['id_kendaraan'])->harga;
+            },
+            'total_harga' => function ($attributes) {
+                return $attributes['harga'] * $attributes['qty'];
+            }
         ];
     }
 }

@@ -16,7 +16,7 @@ class KendaraanFactory extends Factory
         return [
             'tahun_keluaran' => $this->faker->year(),
             'warna' => $this->faker->colorName(),
-            'harga' => $this->faker->randomNumber(),
+            'harga' => $this->faker->numberBetween(10000, 30000),
             'jenis_kendaraan' => $this->faker->randomElement(['motor', 'mobil']),
             'nama_kendaraan' => $this->faker->streetName(),
             'spesifikasi' => function ($attributes) {
@@ -34,7 +34,7 @@ class KendaraanFactory extends Factory
                     ]);
                 }
             },
-            'stok' => $this->faker->randomNumber()
+            'stok' => $this->faker->randomDigitNotZero()
         ];
     }
 }

@@ -21,6 +21,8 @@ class CreateOrderItemsTable extends Migration
             $table->integer('qty');
             $table->decimal('total_harga');
             $table->timestamps();
+            $table->foreign('id_order')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

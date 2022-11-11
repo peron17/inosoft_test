@@ -14,4 +14,9 @@ class Kendaraan extends Model
     protected $fillable = [
         'tahun_keluaran', 'warna', 'harga', 'jenis_kendaraan', 'nama_kendaraan', 'spesifikasi', 'stok'
     ];
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

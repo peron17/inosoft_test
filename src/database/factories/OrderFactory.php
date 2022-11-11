@@ -14,7 +14,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tgl_transaksi' => $this->faker->date(),
+            'nama_pelanggan' => $this->faker->name()
         ];
     }
 }
