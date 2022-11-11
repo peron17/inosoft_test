@@ -25,7 +25,25 @@ class SalesReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'jenis_kendaraan' => 'string|in:mobil,motor|nullable'
+            'jenis_kendaraan' => 'string|in:mobil,motor|nullable',
+            'start_date' => [
+                'nullable',
+                'date',
+                'date_format:Y-m-d'
+            ],
+            'end_date' => [
+                'nullable',
+                'date',
+                'date_format:Y-m-d'
+            ],
+            'sort_by' => [
+                'nullable',
+                'in:tgl_transaksi,nama_pelanggan,total_harga',
+            ],
+            'sort' => [
+                'nullable',
+                'in:asc,desc',
+            ],
         ];
     }
 }
