@@ -2,16 +2,15 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\StockReportRequest;
 use App\Http\Resources\StockResource;
 use App\Models\Kendaraan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class KendaraanRepository
 {
     private $request;
 
-    public function __construct(Request $request)
+    public function __construct(StockReportRequest $request)
     {
         $this->request = $request;
     }

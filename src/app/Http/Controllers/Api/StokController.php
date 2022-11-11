@@ -9,7 +9,7 @@ class StokController extends BaseController
 {
     private $repository;
 
-    public function __construct(KendaraanRepository $kendaraanRepository, Request $request)
+    public function __construct(KendaraanRepository $kendaraanRepository)
     {
         $this->repository = $kendaraanRepository;
     }
