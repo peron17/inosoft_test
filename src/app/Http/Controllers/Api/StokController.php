@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Repositories\KendaraanRepository;
+use Illuminate\Http\Request;
 
 class StokController extends BaseController
 {
     private $repository;
 
-    public function __construct(KendaraanRepository $kendaraanRepository)
+    public function __construct(KendaraanRepository $kendaraanRepository, Request $request)
     {
         $this->repository = $kendaraanRepository;
     }
