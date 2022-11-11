@@ -15,14 +15,12 @@ class CreateOrderItemsTable extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->string('id_order');
-            $table->string('id_kendaraan');
             $table->decimal('harga');
             $table->integer('qty');
             $table->decimal('total_harga');
             $table->timestamps();
-            $table->foreign('id_order')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_order')->constrained('orders')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_kendaraan')->constrained('kendaraans')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

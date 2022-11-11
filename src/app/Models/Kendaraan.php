@@ -17,6 +17,6 @@ class Kendaraan extends Model
 
     public function orderItems()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class, 'id_kendaraan', '_id');
     }
 }

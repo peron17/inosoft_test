@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class LoginRequest extends FormRequest
+class SalesReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return !Auth::guard('api')->check();
+        return Auth::guard('api')->check();
     }
 
     /**
@@ -25,8 +25,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|string'
+            'jenis_kendaraan' => 'string|in:mobil,motor|nullable'
         ];
     }
 }
